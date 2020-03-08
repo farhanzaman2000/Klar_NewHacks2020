@@ -1,0 +1,146 @@
+<head>
+	<title>Klar</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link href="https://fonts.googleapis.com/css?family=Roboto+Slab:100,300,400,700|Roboto:300,400,700&display=swap"
+		rel="stylesheet">
+	<link rel="stylesheet" href="fonts/icomoon/style.css">
+	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	<link rel="stylesheet" href="css/nouislider.min.css">
+	<link rel="stylesheet" href="css/bootstrap-datetimepicker.css">
+	<link rel="stylesheet" href="css/style.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css"
+		integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+		integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+		crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"
+		integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4"
+		crossorigin="anonymous"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/js/bootstrap.min.js"
+		integrity="sha384-h0AbiXch4ZDo7tp9hKZ4TsHbi047NrKGLO3SEJAg45jXxnGIfYzk4Si90RDIqNm1"
+		crossorigin="anonymous"></script>
+</head>
+
+<body>
+	<div class="container">
+		<center>
+			<form action="/upload" method="post" enctype="multipart/form-data">
+				<div class="form-group">
+					<div class="input-group">
+						<input type="text" class="form-control" readonly>
+						<div class="input-group-btn">
+							<span class="fileUpload btn btn-info">
+								<span class="upl" id="upload">Select Files</span>
+								<input type="file" class="upload up" name="userPhoto" multiple />
+							</span>
+						</div>
+					</div>
+				</div>
+				<label class="radio-inline" style="padding: 5px">
+					<input type="radio" name="optradio" checked value="happiness">Happy
+				</label>
+				<label class="radio-inline" style="padding: 5px">
+					<input type="radio" name="optradio" value="sadness">Sad
+				</label>
+				<label class="radio-inline" style="padding: 5px">
+					<input type="radio" name="optradio" value="happiness">Person Tagging
+				</label>
+				<br>
+				<button type="Submit" class="btn-info">Upload</button>
+			</form>
+		</center>
+	</div>
+</body>
+<!-- NO JS ADDED YET -->
+<style>
+	form {
+		padding: 10px;
+	}
+
+	button {
+		border-radius: 5px;
+		padding: 5px;
+		color: white;
+		font-family: Lato;
+	}
+
+	body {
+		background: linear-gradient(to top right, #B26297 0%, #F5C3E6 100%);
+		display: flex;
+		flex-direction: column;
+		font-family: Lato;
+		height: 100%;
+		margin: auto;
+		text-shadow: 0 0px 2px rgba(245, 245, 245, .25);
+	}
+
+	.container {
+		align-items: center;
+		justify-content: center;
+		margin-top: 20%;
+		width: 400px;
+		height: 150px;
+		background-color: white;
+		border-radius: 10px;
+		box-shadow: 1px 2px #888888;
+	}
+
+	.it .btn-orange {
+		background-color: white;
+		border-color: #777 !important;
+		color: #777;
+		text-align: left;
+		width: 100%;
+	}
+
+	.it input.form-control {
+
+		border: none;
+		margin-bottom: 0px;
+		border-radius: 0px;
+		border-bottom: 1px solid #ddd;
+		box-shadow: none;
+	}
+
+	.it .form-control:focus {
+		border-color: #ff4d0d;
+		box-shadow: none;
+		outline: none;
+	}
+
+	.fileUpload {
+		position: relative;
+		overflow: hidden;
+	}
+
+	.fileUpload input.upload {
+		position: absolute;
+		top: 0;
+		right: 0;
+		margin: 0;
+		padding: 0;
+		font-size: 20px;
+		cursor: pointer;
+		opacity: 0;
+		filter: alpha(opacity=0);
+	}
+</style>
+<script>
+	$(document).on('change', '.up', function () {
+		var names = [];
+		var length = $(this).get(0).files.length;
+		for (var i = 0; i < $(this).get(0).files.length; ++i) {
+			names.push($(this).get(0).files[i].name);
+		}
+		// $("input[name=file]").val(names);
+		if (length > 2) {
+			var fileName = names.join(', ');
+			$(this).closest('.form-group').find('.form-control').attr("value", length + " files selected");
+		}
+		else {
+			$(this).closest('.form-group').find('.form-control').attr("value", names);
+		}
+	});
+</script>
